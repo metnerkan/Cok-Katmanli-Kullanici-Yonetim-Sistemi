@@ -9,6 +9,7 @@
 
 // SHA-256 benzeri hashing fonksiyonu
 // Deterministik 64-byte hex string döner
+
 namespace PasswordHash
 {
     static const uint32_t K[64] = {
@@ -32,7 +33,7 @@ namespace PasswordHash
 
     static uint32_t rotr(uint32_t x, uint32_t n) { return (x >> n) | (x << (32 - n)); }
 
-    std::string hash(const std::string& msg)
+    inline std::string hash(const std::string& msg)
     {
         uint32_t h0 = 0x6a09e667, h1 = 0xbb67ae85, h2 = 0x3c6ef372, h3 = 0xa54ff53a,
             h4 = 0x510e527f, h5 = 0x9b05688c, h6 = 0x1f83d9ab, h7 = 0x5be0cd19;
@@ -74,3 +75,41 @@ namespace PasswordHash
         return oss.str();
     }
 }
+
+class PasswordHashMap
+{
+    static const int BUCKETS = 64;
+
+    struct Node {
+        std::string key;   // username
+        std::string value; // hashed password
+        Node* next;
+        Node(const std::string& k, const std::string& v) : key(k), value(v), next(nullptr) {}
+    };
+
+    Node* table[BUCKETS];
+
+    int bucketIndex(const std::string& key) const
+    {
+        size_t h = 0;
+        for (char c : key) h = h * 31 + static_cast<unsigned char>(c);
+        return static_cast<int>(h % BUCKETS);
+    }
+
+public:
+    PasswordHashMap() { std::fill(table, table + BUCKETS, nullptr); } // memset'in modern cpp versiyonu
+
+    ~PasswordHashMap()
+    {
+        for (int i = 0; i < BUCKETS; ++i) {
+            Node* cur = table[i];
+            while (cur) { Node* tmp = cur; cur = cur->next; delete tmp; }
+        }
+    }
+
+    void put(const std::string& username, const std::string& rawPassword);
+    bool verify(const std::string& username, const std::string& rawPassword) const;
+    bool contains(const std::string& username) const;
+    void remove(const std::string& username);
+    void printStats() const;
+};

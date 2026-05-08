@@ -1,13 +1,12 @@
 #define _CRT_SECURE_NO_WARNINGS
 
+#include "hash.h"  
+
 #include <iostream>
 #include <string>
 #include <sstream>
 #include <vector>
 #include <queue>
-#include <limits>
-#include <iomanip>
-#include <ctime>
 
 
 static std::string currentTimestamp() // simdiki zamani string veri tipinde donduren fonksiyon
@@ -53,14 +52,14 @@ struct User
     bool   isActive;
 
     User() : role("user"), isActive(true) {}
-    User(const std::string& u, const std::string& r = "user")
-        : username(u), role(r),
-        createdAt(currentTimestamp()), isActive(true) {
-    }
+    User(const std::string& u, const std::string& r = "user") // modern constructor syntax
+        : username(u), role(r), createdAt(currentTimestamp()), isActive(true) {}
 };
 
 
 int main()
 {
-    std::cout << "merhaba" << std::endl;
+    PasswordHashMap phm;
+    phm.put("test", "sifresifre");
+    phm.printStats();
 }
