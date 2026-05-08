@@ -40,7 +40,8 @@ std::priority_queue<AuditEvent> auditHeap;
 
 static void logEvent(int priority, const std::string& desc)
 {
-    auditHeap.push({ priority, currentTimestamp(), desc });
+    auditHeap.push({ priority, currentTimestamp(), desc });  // priority queue push eden fonk.
+    // STL (standart template library) de mevcuttur.
 }
 
 // Kullanýcý verilerini tutan struct
@@ -61,5 +62,5 @@ struct User
 
 int main()
 {
-
+    std::cout << "merhaba" << std::endl;
 }

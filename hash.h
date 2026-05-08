@@ -68,9 +68,9 @@ namespace PasswordHash
             h0 += a; h1 += b; h2 += c; h3 += d;
             h4 += e; h5 += f; h6 += g; h7 += hh;
         }
-        ostringstream oss;
+        std::ostringstream oss;
         for (uint32_t v : {h0, h1, h2, h3, h4, h5, h6, h7})
-            oss << hex << setw(8) << setfill('0') << v;
+            oss << std::hex << std::setw(8) << std::setfill('0') << v;
         return oss.str();
     }
 }
