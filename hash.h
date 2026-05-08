@@ -76,6 +76,7 @@ namespace PasswordHash
     }
 }
 
+// Hash-map ve ilgili fonksiyon implementasyonlari icinde barindiran sinif
 class PasswordHashMap
 {
     static const int BUCKETS = 64;

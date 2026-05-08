@@ -26,5 +26,14 @@
     <ClInclude Include="hash.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="userbst.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="util.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="graph.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
