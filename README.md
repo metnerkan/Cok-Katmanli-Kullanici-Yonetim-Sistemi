@@ -4,10 +4,16 @@ Projede veri yapılarının probleme uygun seçilmesi, teknik olarak doğru kull
 kazanımları gözetilmiştir.
 
 Projede kullanılan başlıca veri yapıları;
+
 1-Hash Tablosu
+
 2-İkili Arama Ağaçları (BST)
+
 3-Graflar
+
 4-Bağlı Listeler
+
 5-Stack (Yığın)
+
 6-Priority-Queue (Öncelikli Kuyruk)
 
