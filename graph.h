@@ -77,7 +77,10 @@ public:
                     cur = prev ? prev->next : a.head;
                 }
                 else
-                    prev = cur; cur = cur->next;
+                {
+                    prev = cur;
+                    cur = cur->next;
+                }
             }
         }
         // kendisini de sileriz

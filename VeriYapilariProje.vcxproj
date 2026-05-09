@@ -126,10 +126,13 @@
   <ItemGroup>
     <ClCompile Include="hash.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ums.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="graph.h" />
     <ClInclude Include="hash.h" />
+    <ClInclude Include="stack.h" />
+    <ClInclude Include="ums.h" />
     <ClInclude Include="userbst.h" />
     <ClInclude Include="util.h" />
   </ItemGroup>

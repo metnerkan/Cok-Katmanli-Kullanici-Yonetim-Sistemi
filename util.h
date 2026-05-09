@@ -1,14 +1,23 @@
 #pragma once
 
+#define _CRT_SECURE_NO_WARNINGS
+
 #include <string>  
 #include <queue>
 
 static std::string currentTimestamp() // simdiki zamani string veri tipinde donduren fonksiyon
 {
-    time_t now = time(nullptr);
+    time_t rawTime;
+    tm timeInfo;
+    time(&rawTime);
     char buf[20];
-    strftime(buf, sizeof(buf), "%Y-%m-%d %H:%M:%S", localtime(&now));
-    return std::string(buf);
+    if (!localtime_s(&timeInfo, &rawTime))
+    {
+        strftime(buf, sizeof(buf), "%Y-%m-%d %H:%M:%S", &timeInfo);
+        return std::string(buf);
+    }
+    else
+        std::cerr << "Zaman donusturulemedi!" << std::endl; return {};
 }
 
 static void clearInput()
@@ -29,7 +38,7 @@ struct AuditEvent
     */
 };
 
-std::priority_queue<AuditEvent> auditHeap;
+inline std::priority_queue<AuditEvent> auditHeap;
 
 static void logEvent(int priority, const std::string& desc)
 {

@@ -1,7 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 
-#include "hash.h" 
-#include "util.h"
+#include "ums.h"
 
 #include <iostream>
 #include <string>
@@ -14,7 +13,6 @@
 
 int main()
 {
-    PasswordHashMap phm;
-    phm.put("test", "sifresifre");
-    phm.printStats();
+    UserManagementSystem ums;
+    ums.run();
 }
